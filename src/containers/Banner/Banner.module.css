@@ -1,0 +1,27 @@
+@import "../../styles/main.module.css";
+
+.Banner {
+    background-color: var(--primary-color);
+    padding: 3px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Logo {
+    font-weight: bold;
+}
+
+.BannerItems {
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.BannerItems > * {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
