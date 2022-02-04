@@ -1,4 +1,4 @@
-.Banner {
+.Header {
     background-color: var(--primary-color);
     padding: 3px 10px;
     display: flex;
@@ -10,14 +10,14 @@
     font-weight: bold;
 }
 
-.BannerItems {
+.HeaderItems {
     padding: 2px;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.BannerItems > * {
+.HeaderItems > * {
     margin: 10px;
     padding: 5px;
     border-radius: 10px;
