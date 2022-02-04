@@ -1,5 +1,3 @@
-@import "../../styles/main.module.css";
-
 .Banner {
     background-color: var(--primary-color);
     padding: 3px 10px;
