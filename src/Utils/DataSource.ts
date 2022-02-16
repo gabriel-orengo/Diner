@@ -1,6 +1,7 @@
 type FoodType = "Breakfast" | "Lunch" | "Dinner";
 
 interface MenuItem {
+    key: number;
     name: string;
     type: FoodType;
     description: string;
@@ -8,15 +9,26 @@ interface MenuItem {
 
 let menuItems: MenuItem[] = [
     {
+        key: 0,
         name: "Eggs",
         type: "Breakfast",
         description: "Scrambled Eggs with melted cheese inside.",
     },
-    { name: "Pancakes", type: "Breakfast", description: "testDesc" },
-    { name: "Bacon", type: "Breakfast", description: "testDesc" },
-    { name: "French Toast", type: "Breakfast", description: "testDesc" },
-    { name: "Garlic Breadsticks", type: "Lunch", description: "testDesc" },
-    { name: "Pizza", type: "Dinner", description: "testDesc" },
+    { key: 1, name: "Pancakes", type: "Breakfast", description: "testDesc" },
+    { key: 2, name: "Bacon", type: "Breakfast", description: "testDesc" },
+    {
+        key: 3,
+        name: "French Toast",
+        type: "Breakfast",
+        description: "testDesc",
+    },
+    {
+        key: 4,
+        name: "Garlic Breadsticks",
+        type: "Lunch",
+        description: "testDesc",
+    },
+    { key: 5, name: "Pizza", type: "Dinner", description: "testDesc" },
 ];
 
 export { menuItems };
