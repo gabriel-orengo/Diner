@@ -1,0 +1,48 @@
+.Button {
+    border: 1px solid black;
+    box-shadow: 0 0 5px grey;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 15px;
+    padding: 10px;
+    background-color: var(--primary-color);
+}
+
+.Button:hover {
+    border: 1px solid white;
+}
+
+.Button:active {
+    box-shadow: none;
+}
+
+.Alert {
+    background-color: var(--alert-color);
+    color: white;
+}
+
+.Strong {
+    background-color: var(--strong-color);
+    color: white;
+}
+
+.Secondary {
+    background-color: var(--secondary-color);
+}
+
+.Circle {
+    border-radius: 20px;
+}
+
+.Square {
+    border-radius: 0;
+}
+
+.Rounded {
+    border-radius: 10px;
+}
+
+.Disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}

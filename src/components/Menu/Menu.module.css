@@ -1,5 +1,19 @@
 .Menu {
     margin: 0;
     padding: 0;
-    /* max-width: 240ch; */
+    width: 98%;
+}
+
+.Content {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: start;
+}
+
+.ButtonAlignment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

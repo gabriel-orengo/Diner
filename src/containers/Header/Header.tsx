@@ -31,7 +31,11 @@ const Header = (props: any) => {
                 />
                 {JSON.parse(sessionStorage.getItem("cart") || "[]").length !==
                 0 ? (
-                    <div className={classes.CartNotification}></div>
+                    <div
+                        className={classes.CartNotification}
+                        onClick={() => {
+                            drawerHandler();
+                        }}></div>
                 ) : (
                     ""
                 )}
