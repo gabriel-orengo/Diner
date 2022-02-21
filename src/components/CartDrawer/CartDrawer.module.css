@@ -8,17 +8,26 @@
     height: 50vh;
     overflow-y: scroll;
     border-top: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px;
+}
+
+.EmptyMessage {
+    margin: auto;
+    padding: 25px;
+}
+
+.MarginTopAuto {
+    margin-top: auto;
 }
 
 @media screen and (min-width: 550px) {
     .CartDrawer {
         top: 0;
         width: 400px;
-        border-left: 1px solid black;
-        display: flex;
-        flex-direction: column;
         min-height: 100vh;
-        padding: 0 5px;
+        border-left: 1px solid black;
     }
 
     .Content {
@@ -32,9 +41,5 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-    }
-
-    .CheckoutButton {
-        margin-top: auto;
     }
 }

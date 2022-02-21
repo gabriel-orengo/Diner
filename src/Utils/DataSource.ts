@@ -29,6 +29,7 @@ let menuItems: MenuItem[] = [
         description: "testDesc",
     },
     { key: 5, name: "Pizza", type: "Dinner", description: "testDesc" },
+    { key: 6, name: "Hot Pockets", type: "Dinner", description: "testDesc" },
 ];
 
 export { menuItems };

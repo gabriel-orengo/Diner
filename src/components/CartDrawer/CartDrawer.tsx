@@ -37,25 +37,27 @@ const CartDrawer = (props: any) => {
         <>
             <Backdrop action={props.handler} />
             <div className={classes.CartDrawer}>
-                {cartUI}
-                <div className={classes.CheckoutButton}>
-                    {cartUI.length !== 0 ? (
+                {cartUI.length !== 0 ? (
+                    cartUI
+                ) : (
+                    <p className={classes.EmptyMessage}>
+                        Looks a little empty here...
+                    </p>
+                )}
+                {cartUI.length !== 0 ? (
+                    <div className={classes.MarginTopAuto}>
                         <Button
                             type="strong"
                             shape="circle"
                             action={() => alert("Checkout")}>
                             Checkout
                         </Button>
-                    ) : (
-                        <Button
-                            disabled
-                            type="strong"
-                            shape="circle"
-                            action={() => alert("Checkout")}>
-                            Checkout
-                        </Button>
-                    )}
-                </div>
+                    </div>
+                ) : (
+                    <Button disabled type="strong" shape="circle">
+                        Checkout
+                    </Button>
+                )}
             </div>
         </>
     );
