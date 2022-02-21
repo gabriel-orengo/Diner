@@ -1,0 +1,35 @@
+.Checkout {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+}
+
+.Content {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: start;
+}
+
+.ButtonAlignment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.EmptyMessage {
+    margin: auto;
+    padding: 25px;
+}
+
+.MarginTopAuto {
+    margin-top: auto;
+}
+
+.Link {
+    text-decoration: none;
+    color: white;
+}

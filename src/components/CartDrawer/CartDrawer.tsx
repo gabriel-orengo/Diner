@@ -3,6 +3,7 @@ import { useCart } from "../../Utils/CartContext";
 import Button from "../../containers/Common/Button/Button";
 import List from "../../containers/Common/List/List";
 import Backdrop from "../../containers/Common/Backdrop/Backdrop";
+import { Link } from "react-router-dom";
 
 const CartDrawer = (props: any) => {
     // Get the cart context
@@ -46,12 +47,14 @@ const CartDrawer = (props: any) => {
                 )}
                 {cartUI.length !== 0 ? (
                     <div className={classes.MarginTopAuto}>
-                        <Button
-                            type="strong"
-                            shape="circle"
-                            action={() => alert("Checkout")}>
-                            Checkout
-                        </Button>
+                        <Link to="/checkout" className={classes.Link}>
+                            <Button
+                                type="strong"
+                                shape="circle"
+                                action={props.handler}>
+                                Checkout
+                            </Button>
+                        </Link>
                     </div>
                 ) : (
                     <Button disabled type="strong" shape="circle">
