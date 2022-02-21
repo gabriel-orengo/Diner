@@ -37,9 +37,8 @@ const CartDrawer = (props: any) => {
         <>
             <Backdrop action={props.handler} />
             <div className={classes.CartDrawer}>
-                <p>This is the drawer</p>
-                <div>
-                    {cartUI}
+                {cartUI}
+                <div className={classes.CheckoutButton}>
                     {cartUI.length !== 0 ? (
                         <Button
                             type="strong"
