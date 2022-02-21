@@ -1,18 +1,17 @@
-import React, { useState } from "react";
 import classes from "./CartDrawer.module.css";
+import { useCart } from "../../Utils/CartContext";
 import Button from "../../containers/Common/Button/Button";
 import List from "../../containers/Common/List/List";
 import Backdrop from "../../containers/Common/Backdrop/Backdrop";
 
 const CartDrawer = (props: any) => {
-    // Use state for the cart
-    const [cart, setCart] = useState([]);
+    // Get the cart context
+    const cartContext = useCart();
 
     // Get cart from session storage
-    let cartArray = JSON.parse(sessionStorage.getItem("cart") || "[]");
-    let cartUI = cartArray.map((item: any) => {
+    let cartUI = cartContext.cart.map((item: any) => {
         return (
-            <List>
+            <List key={item.key}>
                 <div className={classes.Content}>
                     <div>
                         <h4>{item.name}</h4>
@@ -24,7 +23,7 @@ const CartDrawer = (props: any) => {
                             type="alert"
                             shape="circle"
                             action={() => {
-                                removeItem(item.name);
+                                cartContext.removeItem(item);
                             }}>
                             Remove
                         </Button>
@@ -33,37 +32,6 @@ const CartDrawer = (props: any) => {
             </List>
         );
     });
-
-    // ! Update the id to be a unique id. I'm having issues with removing items with the same id
-    // Function to remove the selected item
-    const removeItem = (name: string) => {
-        let cartArray = JSON.parse(sessionStorage.getItem("cart") || "[]");
-
-        // Find the index of the current item
-        const elementIndex = cartArray.findIndex((element: any) => {
-            return element.name == name;
-        });
-
-        // Decrement the quantity of the found item
-        cartArray[elementIndex] = {
-            ...cartArray[elementIndex],
-            quantity: cartArray[elementIndex].quantity - 1,
-        };
-
-        // If the item's quantity is 0, remove that item
-        if (cartArray[elementIndex].quantity === 0) {
-            let newArray = cartArray.filter((element: any) => {
-                return element.name !== name;
-            });
-            setCart(newArray);
-            // Set the cart key to the cart state
-            sessionStorage.setItem("cart", JSON.stringify(newArray));
-        } else {
-            setCart(cartArray);
-            // Set the cart key to the cart state
-            sessionStorage.setItem("cart", JSON.stringify(cartArray));
-        }
-    };
 
     return (
         <>
