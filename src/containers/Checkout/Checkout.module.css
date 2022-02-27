@@ -33,3 +33,15 @@
     text-decoration: none;
     color: white;
 }
+
+.Modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Buttons {
+    display: -ms-grid;
+    display: grid;
+    grid-template-columns: auto auto;
+}

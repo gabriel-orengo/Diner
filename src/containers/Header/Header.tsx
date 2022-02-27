@@ -19,18 +19,6 @@ const Header = (props: any) => {
         setOpenDrawer(!openDrawer);
     };
 
-    // Get the total number of items from the cart
-    const getQuantity = (cartArray: any) => {
-        let quantity: number = 0;
-
-        // Loop through array items to get the quantity of items
-        for (let i = 0; i < cartArray.length; i++) {
-            quantity += cartArray[i].quantity;
-        }
-
-        return quantity;
-    };
-
     return (
         <div className={classes.Header}>
             <p className={classes.Logo}>
@@ -57,7 +45,7 @@ const Header = (props: any) => {
                             onClick={() => {
                                 drawerHandler();
                             }}>
-                            {getQuantity(cartContext.cart)}
+                            {cartContext.totalQuantity}
                         </div>
                     ) : (
                         ""

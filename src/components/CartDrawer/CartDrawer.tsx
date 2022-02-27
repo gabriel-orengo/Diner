@@ -18,6 +18,7 @@ const CartDrawer = (props: any) => {
                         <h4>{item.name}</h4>
                         <p>{item.description}</p>
                         <p>Quantity: {item.quantity}</p>
+                        <p>Cost: ${item.totalCost.toFixed(2)}</p>
                     </div>
                     <div className={classes.ButtonAlignment}>
                         <Button
@@ -45,8 +46,12 @@ const CartDrawer = (props: any) => {
                         Looks a little empty here...
                     </p>
                 )}
+
                 {cartUI.length !== 0 ? (
                     <div className={classes.MarginTopAuto}>
+                        <div>
+                            Total Cost: ${cartContext.totalCost.toFixed(2)}
+                        </div>
                         <Link to="/checkout" className={classes.Link}>
                             <Button
                                 type="strong"
@@ -57,9 +62,14 @@ const CartDrawer = (props: any) => {
                         </Link>
                     </div>
                 ) : (
-                    <Button disabled type="strong" shape="circle">
-                        Checkout
-                    </Button>
+                    <div>
+                        <div>
+                            Total Cost: ${cartContext.totalCost.toFixed(2)}
+                        </div>
+                        <Button disabled type="strong" shape="circle">
+                            Checkout
+                        </Button>
+                    </div>
                 )}
             </div>
         </>

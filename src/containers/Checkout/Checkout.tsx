@@ -3,10 +3,13 @@ import { useCart } from "../../Utils/CartContext";
 import List from "../Common/List/List";
 import Button from "../Common/Button/Button";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import Modal from "../Common/Modal/Modal";
 
 const Checkout = () => {
     // Get the cart context
     const cartContext = useCart();
+    const [showModal, setShowModal] = useState(false);
 
     // Get cart from session storage
     let cartUI = cartContext.cart.map((item: any) => {
@@ -17,6 +20,7 @@ const Checkout = () => {
                         <h4>{item.name}</h4>
                         <p>{item.description}</p>
                         <p>Quantity: {item.quantity}</p>
+                        <p>Cost: ${item.totalCost.toFixed(2)}</p>
                     </div>
                     <div className={classes.ButtonAlignment}>
                         <Button
@@ -35,6 +39,7 @@ const Checkout = () => {
 
     return (
         <div className={classes.Checkout}>
+            <p>Let's review your order!</p>
             {cartUI.length !== 0 ? (
                 cartUI
             ) : (
@@ -44,16 +49,43 @@ const Checkout = () => {
             )}
             {cartUI.length !== 0 ? (
                 <div className={classes.MarginTopAuto}>
-                    <Link to="/" className={classes.Link}>
-                        <Button type="strong" shape="circle">
-                            Place Order
-                        </Button>
-                    </Link>
+                    <Button
+                        type="strong"
+                        shape="circle"
+                        action={() => setShowModal(!showModal)}>
+                        Place Order
+                    </Button>
                 </div>
             ) : (
                 <Button disabled type="strong" shape="circle">
                     Place Order
                 </Button>
+            )}
+            {showModal ? (
+                <Modal handler={() => setShowModal(!showModal)}>
+                    <div className={classes.Modal}>
+                        <h2>Ready to place your order?</h2>
+                        <p>Total Cost: ${cartContext.totalCost.toFixed(2)}</p>
+                        <div className={classes.Buttons}>
+                            <Button
+                                type="secondary"
+                                shape="circle"
+                                action={() => setShowModal(!showModal)}>
+                                No
+                            </Button>
+                            <Link to="/" className={classes.Link}>
+                                <Button
+                                    type="strong"
+                                    shape="circle"
+                                    action={cartContext.clearCart}>
+                                    Yes
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+                </Modal>
+            ) : (
+                ""
             )}
         </div>
     );
