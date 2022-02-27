@@ -2,6 +2,7 @@
     border: 1px solid black;
     box-shadow: 0 0 5px grey;
     box-sizing: border-box;
+    text-align: center;
     cursor: pointer;
     margin: 15px;
     padding: 10px;

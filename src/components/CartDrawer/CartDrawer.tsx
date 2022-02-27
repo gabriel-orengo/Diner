@@ -16,18 +16,26 @@ const CartDrawer = (props: any) => {
                 <div className={classes.Content}>
                     <div>
                         <h4>{item.name}</h4>
-                        <p>{item.description}</p>
-                        <p>Quantity: {item.quantity}</p>
+                        {/* <p>Quantity: {item.quantity}</p> */}
                         <p>Cost: ${item.totalCost.toFixed(2)}</p>
                     </div>
                     <div className={classes.ButtonAlignment}>
                         <Button
-                            type="alert"
+                            type="secondary"
                             shape="circle"
                             action={() => {
                                 cartContext.removeItem(item);
                             }}>
-                            Remove
+                            <span>-</span>
+                        </Button>
+                        {item.quantity}
+                        <Button
+                            type="secondary"
+                            shape="circle"
+                            action={() => {
+                                cartContext.addItem(item);
+                            }}>
+                            <span>+</span>
                         </Button>
                     </div>
                 </div>
