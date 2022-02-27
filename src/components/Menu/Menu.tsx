@@ -16,6 +16,7 @@ const Menu = () => {
                     <div>
                         <h4>{item.name}</h4>
                         <p>{item.description}</p>
+                        <p>Cost: ${item.cost.toFixed(2)}</p>
                     </div>
                     <div className={classes.ButtonAlignment}>
                         <Button
