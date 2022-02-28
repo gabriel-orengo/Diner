@@ -4,6 +4,7 @@ import Button from "../../containers/Common/Button/Button";
 import List from "../../containers/Common/List/List";
 import Backdrop from "../../containers/Common/Backdrop/Backdrop";
 import { Link } from "react-router-dom";
+import Card from "../../containers/Common/Card/Card";
 
 const CartDrawer = (props: any) => {
     // Get the cart context
@@ -12,7 +13,7 @@ const CartDrawer = (props: any) => {
     // Get cart from session storage
     let cartUI = cartContext.cart.map((item: any) => {
         return (
-            <List key={item.key}>
+            <Card key={item.key}>
                 <div className={classes.Content}>
                     <div>
                         <h4>{item.name}</h4>
@@ -39,7 +40,7 @@ const CartDrawer = (props: any) => {
                         </Button>
                     </div>
                 </div>
-            </List>
+            </Card>
         );
     });
 
