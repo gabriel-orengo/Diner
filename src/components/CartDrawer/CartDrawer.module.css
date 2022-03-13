@@ -1,52 +1,76 @@
 .CartDrawer {
-    position: fixed;
-    z-index: 5;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: var(--primary-color);
-    height: 50vh;
-    overflow-y: scroll;
-    border-top: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding: 0 5px;
+	position: fixed;
+	z-index: 5;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: var(--primary-color);
+	height: 50vh;
+	overflow-y: scroll;
+	border-top: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding: 0 5px;
 }
 
 .EmptyMessage {
-    margin: auto;
-    padding: 25px;
+	margin: auto;
+	padding: 25px;
 }
 
 .MarginTopAuto {
-    margin-top: auto;
+	margin-top: auto;
 }
 
 .Link {
-    text-decoration: none;
-    color: white;
+	text-decoration: none;
+	color: white;
 }
 
 .ButtonAlignment {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.Minus {
+	position: relative;
+}
+
+.Minus::after {
+	content: "-";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.Plus {
+	position: relative;
+}
+
+.Plus::after {
+	content: "+";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 @media screen and (min-width: 550px) {
-    .CartDrawer {
-        top: 0;
-        width: 400px;
-        min-height: 100vh;
-        border-top: none;
-        border-left: 1px solid black;
-    }
+	.CartDrawer {
+		top: 0;
+		width: 400px;
+		min-height: 100vh;
+		border-top: none;
+		border-left: 1px solid black;
+	}
 
-    .Content {
-        display: flex;
-        justify-content: space-between;
-        text-align: start;
-        margin: 5px;
-    }
+	.Content {
+		display: flex;
+		justify-content: space-between;
+		text-align: start;
+		margin: 5px;
+	}
 }
