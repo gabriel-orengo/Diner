@@ -1,48 +1,56 @@
 .Button {
-    border: 1px solid black;
-    box-shadow: 0 0 5px grey;
-    box-sizing: border-box;
-    cursor: pointer;
-    margin: 15px;
-    padding: 10px;
-    background-color: var(--primary-color);
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	border: 1px solid black;
+	box-shadow: 0 0 5px grey;
+	box-sizing: border-box;
+	text-align: center;
+	cursor: pointer;
+	margin: 20px;
+	padding: 15px;
+	background-color: var(--primary-color);
 }
 
 .Button:hover {
-    border: 1px solid white;
+	border: 1px solid white;
 }
 
 .Button:active {
-    box-shadow: none;
+	box-shadow: none;
 }
 
 .Alert {
-    background-color: var(--alert-color);
-    color: white;
+	background-color: var(--alert-color);
+	color: white;
 }
 
 .Strong {
-    background-color: var(--strong-color);
-    color: white;
+	background-color: var(--strong-color);
+	color: white;
 }
 
 .Secondary {
-    background-color: var(--secondary-color);
+	background-color: var(--secondary-color);
+}
+
+.Oval {
+	border-radius: 30px;
 }
 
 .Circle {
-    border-radius: 20px;
+	border-radius: 50%;
 }
 
 .Square {
-    border-radius: 0;
+	border-radius: 0;
 }
 
 .Rounded {
-    border-radius: 10px;
+	border-radius: 10px;
 }
 
 .Disabled {
-    pointer-events: none;
-    opacity: 0.4;
+	pointer-events: none;
+	opacity: 0.4;
 }

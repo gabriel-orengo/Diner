@@ -1,47 +1,72 @@
 .Checkout {
-    margin: 0px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    justify-content: center;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	justify-content: center;
 }
 
 .Content {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: start;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	text-align: start;
 }
 
 .ButtonAlignment {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .EmptyMessage {
-    margin: auto;
-    padding: 25px;
+	margin: auto;
+	padding: 25px;
 }
 
 .MarginTopAuto {
-    margin-top: auto;
+	margin-top: auto;
 }
 
 .Link {
-    text-decoration: none;
-    color: white;
+	text-decoration: none;
+	color: white;
 }
 
 .Modal {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .Buttons {
-    display: -ms-grid;
-    display: grid;
-    grid-template-columns: auto auto;
+	display: -ms-grid;
+	display: grid;
+	grid-template-columns: auto auto;
+}
+
+.Minus {
+	position: relative;
+}
+
+.Minus::after {
+	content: "-";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.Plus {
+	position: relative;
+}
+
+.Plus::after {
+	content: "+";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
