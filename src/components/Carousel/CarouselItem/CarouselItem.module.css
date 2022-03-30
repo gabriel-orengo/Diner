@@ -1,0 +1,37 @@
+.CarouselItem {
+	border-radius: 10px;
+	position: relative;
+	margin: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	box-shadow: 0px 2px 5px black;
+	padding: 1em 0;
+	flex-grow: 1;
+}
+
+.Content {
+	z-index: 2;
+	color: white;
+	font-size: 1.5em;
+	text-shadow: -1px 1px 0 black, 1px 1px 0 black, 1px -1px 0 black,
+		-1px -1px 0 black;
+	padding: 15px;
+}
+
+.Image {
+	position: absolute;
+	z-index: 1;
+	transform: translate(-50%, 0);
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+@media screen and (min-width: 450px) {
+	.Content {
+		font-size: 2em;
+	}
+}
