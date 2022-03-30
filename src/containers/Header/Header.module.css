@@ -17,6 +17,10 @@
 	color: black;
 }
 
+.Link > * {
+	margin: 0 0.5em;
+}
+
 .HeaderItems {
 	padding: 2px;
 	display: flex;
