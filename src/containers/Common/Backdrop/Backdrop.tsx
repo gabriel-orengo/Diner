@@ -1,8 +1,26 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import classes from "./Backdrop.module.css";
 
+/**
+ * Backdrop component used behind Modal and CartDrawer components
+ * @param props
+ * @returns Backdrop component
+ */
 const Backdrop = (props: any) => {
-    return <div className={classes.Backdrop} onClick={props.action}></div>;
+	// Animation state
+	const [animation, setAnimation] = useState(0);
+
+	// Set animation on display
+	useEffect(() => {
+		props.display ? setAnimation(1) : setAnimation(0);
+	}, [props.display]);
+
+	return (
+		<div
+			className={classes.Backdrop}
+			data-animation={animation}
+			onClick={props.action}></div>
+	);
 };
 
 export default Backdrop;

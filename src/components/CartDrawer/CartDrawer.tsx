@@ -4,6 +4,7 @@ import Button from "../../containers/Common/Button/Button";
 import Backdrop from "../../containers/Common/Backdrop/Backdrop";
 import { Link } from "react-router-dom";
 import Card from "../../containers/Common/Card/Card";
+import { useEffect, useState } from "react";
 
 /**
  * Cart Drawer component
@@ -13,6 +14,14 @@ import Card from "../../containers/Common/Card/Card";
 const CartDrawer = (props: any) => {
 	// Get the cart context
 	const cartContext = useCart();
+
+	// Animation state
+	const [animation, setAnimation] = useState(0);
+
+	// Set animation on display
+	useEffect(() => {
+		props.display ? setAnimation(1) : setAnimation(0);
+	}, [props.display]);
 
 	// Get cart from session storage
 	let cartUI = cartContext.cart.map((item: any) => {
@@ -50,8 +59,8 @@ const CartDrawer = (props: any) => {
 
 	return (
 		<>
-			<Backdrop action={props.handler} />
-			<div className={classes.CartDrawer}>
+			<Backdrop action={props.handler} display={props.display} />
+			<div className={classes.CartDrawer} data-animation={animation}>
 				{cartUI.length !== 0 ? (
 					cartUI
 				) : (

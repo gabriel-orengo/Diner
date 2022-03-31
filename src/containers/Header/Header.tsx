@@ -55,7 +55,12 @@ const Header = (props: any) => {
 					)}
 				</div>
 			</div>
-			{openDrawer ? <CartDrawer handler={() => drawerHandler()} /> : ""}
+			{openDrawer && (
+				<CartDrawer
+					handler={() => drawerHandler()}
+					display={openDrawer}
+				/>
+			)}
 		</div>
 	);
 };

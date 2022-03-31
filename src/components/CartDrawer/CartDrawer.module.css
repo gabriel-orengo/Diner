@@ -5,13 +5,19 @@
 	bottom: 0;
 	width: 100%;
 	background-color: var(--primary-color);
-	height: 50vh;
-	overflow-y: scroll;
+	height: 0vh;
+	overflow-y: auto;
 	border-top: 1px solid black;
 	display: flex;
 	flex-direction: column;
 	flex: 1;
 	padding: 0 5px;
+	transition: height 400ms;
+	overscroll-behavior: contain;
+}
+
+.CartDrawer[data-animation="1"] {
+	height: 50vh;
 }
 
 .EmptyMessage {
@@ -61,10 +67,16 @@
 @media screen and (min-width: 550px) {
 	.CartDrawer {
 		top: 0;
+		right: -600px;
 		width: 400px;
 		min-height: 100vh;
 		border-top: none;
 		border-left: 1px solid black;
+		transition: right 400ms;
+	}
+
+	.CartDrawer[data-animation="1"] {
+		right: 0;
 	}
 
 	.Content {
