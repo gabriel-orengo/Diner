@@ -3,7 +3,13 @@
 	z-index: 3;
 	left: 0;
 	top: 0;
-	background-color: hsla(0, 0%, 0%, 0.534);
+	opacity: 0;
+	background-color: hsla(0, 0%, 0%);
 	width: 100%;
 	height: 100%;
+	transition: opacity 400ms;
+}
+
+.Backdrop[data-animation="1"] {
+	opacity: 0.534;
 }
