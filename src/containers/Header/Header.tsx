@@ -4,6 +4,7 @@ import { useCart } from "../../Utils/CartContext";
 import { Link } from "react-router-dom";
 import cart from "../../images/shopping-cart.png";
 import account from "../../images/account.png";
+import AccountDrawer from "../../components/AccountDrawer/AccountDrawer";
 import CartDrawer from "../../components/CartDrawer/CartDrawer";
 
 /**
@@ -12,15 +13,29 @@ import CartDrawer from "../../components/CartDrawer/CartDrawer";
  * @returns Header component
  */
 const Header = (props: any) => {
+	// Constants
+	const CART = "cart";
+	const ACCOUNT = "account";
+
 	// Create state for opening the cart drawer
-	const [openDrawer, setOpenDrawer] = useState(false);
+	const [openAccountDrawer, setOpenAccountDrawer] = useState(false);
+
+	// Create state for opening the cart drawer
+	const [openCartDrawer, setOpenCartDrawer] = useState(false);
 
 	// Get the cart context
 	const cartContext = useCart();
 
 	// Toggle the cart drawer
-	const drawerHandler = () => {
-		setOpenDrawer(!openDrawer);
+	const drawerHandler = (drawerType: string) => {
+		switch (drawerType) {
+			case CART:
+				setOpenCartDrawer(!openCartDrawer);
+				break;
+			case ACCOUNT:
+				setOpenAccountDrawer(!openAccountDrawer);
+				break;
+		}
 	};
 
 	return (
@@ -31,22 +46,28 @@ const Header = (props: any) => {
 				</Link>
 			</p>
 			<div className={classes.HeaderItems}>
-				<img src={account} title="Account" height={25} alt="Account" />
+				<div className={classes.Cart}>
+					<img
+						src={account}
+						title="Account"
+						height={25}
+						alt="Account"
+						onClick={() => drawerHandler(ACCOUNT)}
+					/>
+				</div>
 				<div className={classes.Cart}>
 					<img
 						src={cart}
 						title="Shopping Cart"
 						alt="Cart"
 						height={25}
-						onClick={() => {
-							drawerHandler();
-						}}
+						onClick={() => drawerHandler(CART)}
 					/>
 					{cartContext.cart.length !== 0 ? (
 						<div
 							className={classes.CartNotification}
 							onClick={() => {
-								drawerHandler();
+								drawerHandler(CART);
 							}}>
 							{cartContext.totalQuantity}
 						</div>
@@ -55,10 +76,16 @@ const Header = (props: any) => {
 					)}
 				</div>
 			</div>
-			{openDrawer && (
+			{openCartDrawer && (
 				<CartDrawer
-					handler={() => drawerHandler()}
-					display={openDrawer}
+					handler={() => drawerHandler(CART)}
+					display={openCartDrawer}
+				/>
+			)}
+			{openAccountDrawer && (
+				<AccountDrawer
+					handler={() => drawerHandler(ACCOUNT)}
+					display={openAccountDrawer}
 				/>
 			)}
 		</div>
