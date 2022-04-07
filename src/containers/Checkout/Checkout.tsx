@@ -76,7 +76,9 @@ const Checkout = () => {
 				</Button>
 			)}
 			{showModal ? (
-				<Modal handler={() => setShowModal(!showModal)}>
+				<Modal
+					handler={() => setShowModal(!showModal)}
+					display={showModal}>
 					<div className={classes.Modal}>
 						<h2>Ready to place your order?</h2>
 						<p>Total Cost: ${cartContext.totalCost.toFixed(2)}</p>
