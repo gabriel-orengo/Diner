@@ -1,26 +1,31 @@
 .Modal {
-    position: fixed;
-    z-index: 5;
-    width: 80%;
-    background: white;
-    border: 1px solid black;
-    border-radius: 20px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 15px;
+	position: fixed;
+	z-index: 5;
+	width: 80%;
+	background: white;
+	border: 1px solid black;
+	border-radius: 20px;
+	top: -50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 15px;
+	transition: top 400ms;
+}
+
+.Modal[data-animation="1"] {
+	top: 50%;
 }
 
 @media screen and (min-width: 450px) and (max-width: 1000px) {
-    .Modal {
-        width: 50%;
-        height: auto;
-    }
+	.Modal {
+		width: 50%;
+		height: auto;
+	}
 }
 
 @media screen and (min-width: 1000px) {
-    .Modal {
-        width: 30%;
-        height: auto;
-    }
+	.Modal {
+		width: 30%;
+		height: auto;
+	}
 }
