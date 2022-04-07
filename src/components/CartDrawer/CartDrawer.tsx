@@ -1,27 +1,18 @@
 import classes from "./CartDrawer.module.css";
 import { useCart } from "../../Utils/CartContext";
 import Button from "../../containers/Common/Button/Button";
-import Backdrop from "../../containers/Common/Backdrop/Backdrop";
 import { Link } from "react-router-dom";
 import Card from "../../containers/Common/Card/Card";
-import { useEffect, useState } from "react";
+import Drawer from "../../containers/Common/Drawer/Drawer";
 
 /**
- * Cart Drawer component
+ * Cart Drawer component to display the user's cart
  * @param props Properties that were passed to the component
  * @returns CartDrawer component
  */
 const CartDrawer = (props: any) => {
 	// Get the cart context
 	const cartContext = useCart();
-
-	// Animation state
-	const [animation, setAnimation] = useState(0);
-
-	// Set animation on display
-	useEffect(() => {
-		props.display ? setAnimation(1) : setAnimation(0);
-	}, [props.display]);
 
 	// Get cart from session storage
 	let cartUI = cartContext.cart.map((item: any) => {
@@ -30,7 +21,6 @@ const CartDrawer = (props: any) => {
 				<div className={classes.Content}>
 					<div>
 						<h4>{item.name}</h4>
-						{/* <p>Quantity: {item.quantity}</p> */}
 						<p>Cost: ${item.totalCost.toFixed(2)}</p>
 					</div>
 					<div className={classes.ButtonAlignment}>
@@ -58,43 +48,36 @@ const CartDrawer = (props: any) => {
 	});
 
 	return (
-		<>
-			<Backdrop action={props.handler} display={props.display} />
-			<div className={classes.CartDrawer} data-animation={animation}>
-				{cartUI.length !== 0 ? (
-					cartUI
-				) : (
-					<p className={classes.EmptyMessage}>
-						Looks a little empty here...
-					</p>
-				)}
+		<Drawer handler={props.handler} display={props.display}>
+			{cartUI.length !== 0 ? (
+				cartUI
+			) : (
+				<p className={classes.EmptyMessage}>
+					Looks a little empty here...
+				</p>
+			)}
 
-				{cartUI.length !== 0 ? (
-					<div className={classes.MarginTopAuto}>
-						<div>
-							Total Cost: ${cartContext.totalCost.toFixed(2)}
-						</div>
-						<Link to="/checkout" className={classes.Link}>
-							<Button
-								type="strong"
-								shape="oval"
-								action={props.handler}>
-								Checkout
-							</Button>
-						</Link>
-					</div>
-				) : (
-					<div>
-						<div>
-							Total Cost: ${cartContext.totalCost.toFixed(2)}
-						</div>
-						<Button disabled type="strong" shape="oval">
+			{cartUI.length !== 0 ? (
+				<div className={classes.MarginTopAuto}>
+					<div>Total Cost: ${cartContext.totalCost.toFixed(2)}</div>
+					<Link to="/checkout" className={classes.Link}>
+						<Button
+							type="strong"
+							shape="oval"
+							action={props.handler}>
 							Checkout
 						</Button>
-					</div>
-				)}
-			</div>
-		</>
+					</Link>
+				</div>
+			) : (
+				<div>
+					<div>Total Cost: ${cartContext.totalCost.toFixed(2)}</div>
+					<Button disabled type="strong" shape="oval">
+						Checkout
+					</Button>
+				</div>
+			)}
+		</Drawer>
 	);
 };
 
