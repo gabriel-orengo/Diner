@@ -1,16 +1,45 @@
-import Button from "../Common/Button/Button";
-import { Link } from "react-router-dom";
 import classes from "./Login.module.css";
+import Button from "../Common/Button/Button";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useAuth } from "../../Utils/AuthContext";
 
 /**
  * Login component to display the log in screen
  * @returns Login component
  */
 const Login = () => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [error, setError] = useState("");
+	const { login } = useAuth();
+	const navigate = useNavigate();
+
+	const confirmLogin = async (email: string, password: string) => {
+		try {
+			setError("");
+			await login(email, password);
+			navigate("/", { replace: true });
+		} catch (error: any) {
+			if (error.message.includes("invalid-email")) {
+				setError("Invalid Email");
+			} else if (error.message.includes("wrong-password")) {
+				setError("Wrong Password");
+			} else if (error.message.includes("user-not-found")) {
+				setError("User does not exist");
+			} else {
+				setError(error.message);
+			}
+		}
+	};
+
+	const errorMessage = <div className={classes.ErrorMessage}>{error}</div>;
+
 	return (
 		<div className={classes.Login}>
 			<div className={classes.Form}>
 				<h2>Log in</h2>
+				{error !== "" ? errorMessage : ""}
 				<form
 					onSubmit={() => {
 						console.log("Submitted");
@@ -25,6 +54,7 @@ const Login = () => {
 							title="email"
 							autoComplete="off"
 							required
+							onChange={(event) => setEmail(event.target.value)}
 						/>
 					</div>
 					<div>
@@ -36,6 +66,9 @@ const Login = () => {
 							title="password"
 							autoComplete="off"
 							required
+							onChange={(event) =>
+								setPassword(event.target.value)
+							}
 						/>
 					</div>
 				</form>
@@ -43,15 +76,17 @@ const Login = () => {
 				<Button
 					type="strong"
 					shape="oval"
-					action={() => console.log("Handle Submit")}>
+					action={() => confirmLogin(email, password)}>
 					Log In
 				</Button>
 			</div>
 			<p>
 				Don't have an account?{" "}
-				<Link to="/signup" className={classes.Link}>
-					<span className={classes.Switch}>Sign Up</span>
-				</Link>
+				<span
+					className={classes.Switch}
+					onClick={() => navigate("/signup", { replace: true })}>
+					Sign Up
+				</span>
 			</p>
 		</div>
 	);
