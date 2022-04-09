@@ -1,9 +1,9 @@
-import pizza from "../images/pizza.jpg";
-import eggs from "../images/eggs.jpg";
-import pancakes from "../images/pancakes.jpg";
-import bacon from "../images/bacon.jpg";
-import frenchToast from "../images/french-toast.jpg";
-import dumplings from "../images/dumplings.jpg";
+import pizza from "../Assets/images/pizza.jpg";
+import eggs from "../Assets/images/eggs.jpg";
+import pancakes from "../Assets/images/pancakes.jpg";
+import bacon from "../Assets/images/bacon.jpg";
+import frenchToast from "../Assets/images/french-toast.jpg";
+import dumplings from "../Assets/images/dumplings.jpg";
 
 type FoodType = "Breakfast" | "Lunch" | "Dinner";
 

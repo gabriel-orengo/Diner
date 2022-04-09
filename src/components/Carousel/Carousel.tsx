@@ -1,5 +1,5 @@
-import { useState } from "react";
 import classes from "./Carousel.module.css";
+import { useState } from "react";
 import { menuItems } from "../../Utils/DataSource";
 import CarouselItem from "./CarouselItem/CarouselItem";
 

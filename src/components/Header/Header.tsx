@@ -1,11 +1,10 @@
-import { useState } from "react";
 import classes from "./Header.module.css";
-import { useCart } from "../../Utils/CartContext";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import cart from "../../images/shopping-cart.png";
-import account from "../../images/account.png";
-import AccountDrawer from "../../components/AccountDrawer/AccountDrawer";
-import CartDrawer from "../../components/CartDrawer/CartDrawer";
+import { useCart } from "../../Utils/CartContext";
+import { AccountDrawer, CartDrawer } from "..";
+import cart from "../../Assets/images/shopping-cart.png";
+import account from "../../Assets/images/account.png";
 
 /**
  * Header component to display at the top of every page

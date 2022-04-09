@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import classes from "./Backdrop.module.css";
+import { useEffect, useState } from "react";
 
 /**
  * Backdrop component used behind Modal and CartDrawer components

@@ -1,13 +1,13 @@
+import classes from "./Modal.module.css";
 import { useEffect, useState } from "react";
-import classes from "./Drawer.module.css";
-import Backdrop from "../Backdrop/Backdrop";
+import { Backdrop } from "..";
 
 /**
- * Drawer component that displays a drawer where needed
- * @param props Properties passed into the Drawer component
- * @returns Drawer component
+ * Modal component to display a modal
+ * @param props Properties passed into the Modal component
+ * @returns Modal component
  */
-const Drawer = (props: any) => {
+const Modal = (props: any) => {
 	// Animation state
 	const [animation, setAnimation] = useState(0);
 
@@ -31,11 +31,11 @@ const Drawer = (props: any) => {
 	return (
 		<>
 			<Backdrop action={removeComponent} display={display} />
-			<div className={classes.Drawer} data-animation={animation}>
+			<div className={classes.Modal} data-animation={animation}>
 				{props.children}
 			</div>
 		</>
 	);
 };
 
-export default Drawer;
+export default Modal;
