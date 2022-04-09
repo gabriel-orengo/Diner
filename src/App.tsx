@@ -1,7 +1,14 @@
 import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Header, Footer } from "./components";
-import { Account, Checkout, Content, Login, SignUp, UserPortal } from "./Pages";
+import {
+	Account,
+	Checkout,
+	Content,
+	Login,
+	SignUp,
+	UserPortal,
+} from "./Pages/";
 import { useAuth } from "./Utils/AuthContext";
 
 const App = () => {
