@@ -1,13 +1,7 @@
-import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
-import Header from "./containers/Header/Header";
-import Footer from "./containers/Footer/Footer";
-import Content from "./containers/Content/Content";
-import Checkout from "./containers/Checkout/Checkout";
-import Account from "./containers/Account/Account";
-import Login from "./containers/Login/Login";
-import SignUp from "./containers/SignUp/SignUp";
-import UserPortal from "./containers/Content/UserPortal/UserPortal";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { Header, Footer } from "./components";
+import { Account, Checkout, Content, Login, SignUp, UserPortal } from "./Pages";
 import { useAuth } from "./Utils/AuthContext";
 
 const App = () => {

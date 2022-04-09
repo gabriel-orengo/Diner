@@ -1,7 +1,6 @@
 import classes from "./AccountDrawer.module.css";
 import { Link } from "react-router-dom";
-import Button from "../../containers/Common/Button/Button";
-import Drawer from "../../containers/Common/Drawer/Drawer";
+import { Button, Drawer } from "../../UI";
 import { useAuth } from "../../Utils/AuthContext";
 
 /**

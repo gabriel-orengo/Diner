@@ -1,7 +1,6 @@
 import classes from "./Account.module.css";
 import { useState } from "react";
-import Button from "../Common/Button/Button";
-import Modal from "../Common/Modal/Modal";
+import { Button, Modal } from "../../UI";
 
 /**
  * Account component to display the Account settings

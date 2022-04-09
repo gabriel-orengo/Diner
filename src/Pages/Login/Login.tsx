@@ -1,8 +1,8 @@
 import classes from "./Login.module.css";
-import Button from "../Common/Button/Button";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Utils/AuthContext";
+import { Button } from "../../UI";
 
 /**
  * Login component to display the log in screen

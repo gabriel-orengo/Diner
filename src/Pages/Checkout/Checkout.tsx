@@ -1,10 +1,8 @@
 import classes from "./Checkout.module.css";
-import { useCart } from "../../Utils/CartContext";
-import Button from "../Common/Button/Button";
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import Modal from "../Common/Modal/Modal";
-import Card from "../Common/Card/Card";
+import { Link } from "react-router-dom";
+import { useCart } from "../../Utils/CartContext";
+import { Button, Card, Modal } from "../../UI";
 
 /**
  * Checkout component

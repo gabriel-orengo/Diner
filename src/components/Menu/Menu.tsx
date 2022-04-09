@@ -1,8 +1,7 @@
 import classes from "./Menu.module.css";
 import { menuItems } from "../../Utils/DataSource";
 import { useCart } from "../../Utils/CartContext";
-import Button from "../../containers/Common/Button/Button";
-import Card from "../../containers/Common/Card/Card";
+import { Button, Card } from "../../UI";
 
 /**
  * Menu component

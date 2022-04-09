@@ -1,6 +1,5 @@
 import classes from "./UserPortal.module.css";
-import Menu from "../../../components/Menu/Menu";
-import Carousel from "../../../components/Carousel/Carousel";
+import { Carousel, Menu } from "../../../components";
 
 /**
  * UserPortal component to display for the user

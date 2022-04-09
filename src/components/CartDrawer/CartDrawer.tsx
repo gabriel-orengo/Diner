@@ -1,9 +1,7 @@
 import classes from "./CartDrawer.module.css";
 import { useCart } from "../../Utils/CartContext";
-import Button from "../../containers/Common/Button/Button";
 import { Link } from "react-router-dom";
-import Card from "../../containers/Common/Card/Card";
-import Drawer from "../../containers/Common/Drawer/Drawer";
+import { Button, Card, Drawer } from "../../UI";
 
 /**
  * Cart Drawer component to display the user's cart
