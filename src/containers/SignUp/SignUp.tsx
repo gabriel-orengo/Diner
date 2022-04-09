@@ -1,16 +1,51 @@
-import Button from "../Common/Button/Button";
-import { Link } from "react-router-dom";
 import classes from "./SignUp.module.css";
+import Button from "../Common/Button/Button";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useAuth } from "../../Utils/AuthContext";
 
 /**
  * SignUp component to display the sign up screen
  * @returns SignUp component
  */
 const SignUp = () => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [confirmPassword, setConfirmPassword] = useState("");
+	const [error, setError] = useState("");
+	const { register } = useAuth();
+	const navigate = useNavigate();
+
+	const confirmSignUp = async (
+		email: string,
+		password: string,
+		confirmPassword: string
+	) => {
+		if (password !== confirmPassword)
+			return setError("Passwords do not match!");
+
+		try {
+			setError("");
+			await register(email, password);
+			navigate("/", { replace: true });
+		} catch (error: any) {
+			if (error.message.includes("invalid-email")) {
+				setError("Invalid Email");
+			} else if (error.message.includes("weak-password")) {
+				setError("Password should be at least 6 characters long");
+			} else {
+				setError(error.message);
+			}
+		}
+	};
+
+	const errorMessage = <div className={classes.ErrorMessage}>{error}</div>;
+
 	return (
 		<div className={classes.SignUp}>
 			<div className={classes.Form}>
 				<h2>Sign Up</h2>
+				{error !== "" ? errorMessage : ""}
 				<form onSubmit={() => console.log("Submitted")}>
 					<div>
 						<p>
@@ -22,6 +57,9 @@ const SignUp = () => {
 							title="email"
 							autoComplete="off"
 							required
+							onChange={(event) => {
+								setEmail(event?.target.value);
+							}}
 						/>
 					</div>
 					<div>
@@ -33,6 +71,9 @@ const SignUp = () => {
 							title="password"
 							autoComplete="off"
 							required
+							onChange={(event) => {
+								setPassword(event.target.value);
+							}}
 						/>
 					</div>
 					<div>
@@ -45,21 +86,28 @@ const SignUp = () => {
 							title="password"
 							autoComplete="off"
 							required
+							onChange={(event) => {
+								setConfirmPassword(event.target.value);
+							}}
 						/>
 					</div>
 				</form>
 				<Button
 					type="strong"
 					shape="oval"
-					action={() => console.log("Handle Submit")}>
+					action={() =>
+						confirmSignUp(email, password, confirmPassword)
+					}>
 					Sign Up
 				</Button>
 			</div>
 			<p>
 				Already have an account?{" "}
-				<Link to="/login" className={classes.Link}>
-					<span className={classes.Switch}>Log In</span>
-				</Link>
+				<span
+					className={classes.Switch}
+					onClick={() => navigate("/login", { replace: true })}>
+					Log In
+				</span>
 			</p>
 		</div>
 	);

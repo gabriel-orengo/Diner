@@ -1,5 +1,5 @@
-import { useState } from "react";
 import classes from "./Account.module.css";
+import { useState } from "react";
 import Button from "../Common/Button/Button";
 import Modal from "../Common/Modal/Modal";
 
