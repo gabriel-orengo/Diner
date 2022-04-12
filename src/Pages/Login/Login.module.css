@@ -8,14 +8,6 @@
 	font-size: 0.9em;
 }
 
-.ErrorMessage {
-	font-weight: bold;
-	margin: 0.5em 0;
-	padding: 1em;
-	border-radius: 15px;
-	background-color: var(--alert-color);
-}
-
 .Form {
 	background-color: white;
 	border: 1px solid black;

@@ -2,7 +2,8 @@ import classes from "./SignUp.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Utils/AuthContext";
-import { Button } from "../../UI";
+import { determineError } from "../../Utils/FirebaseErrors";
+import { Button, ErrorMessage } from "../../UI";
 
 /**
  * SignUp component to display the sign up screen
@@ -29,23 +30,15 @@ const SignUp = () => {
 			await register(email, password);
 			navigate("/", { replace: true });
 		} catch (error: any) {
-			if (error.message.includes("invalid-email")) {
-				setError("Invalid Email");
-			} else if (error.message.includes("weak-password")) {
-				setError("Password should be at least 6 characters long");
-			} else {
-				setError(error.message);
-			}
+			setError(determineError(error.message));
 		}
 	};
-
-	const errorMessage = <div className={classes.ErrorMessage}>{error}</div>;
 
 	return (
 		<div className={classes.SignUp}>
 			<div className={classes.Form}>
 				<h2>Sign Up</h2>
-				{error !== "" ? errorMessage : ""}
+				{error !== "" ? <ErrorMessage message={error} /> : ""}
 				<form onSubmit={() => console.log("Submitted")}>
 					<div>
 						<p>
