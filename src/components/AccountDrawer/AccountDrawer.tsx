@@ -1,7 +1,7 @@
 import classes from "./AccountDrawer.module.css";
 import { Link } from "react-router-dom";
-import { Button, Drawer } from "../../UI";
 import { useAuth } from "../../Utils/AuthContext";
+import { Button, Drawer } from "../../UI";
 
 /**
  * AccountDrawer component to display the drawer for account settings
@@ -16,7 +16,10 @@ const AccountDrawer = (props: any) => {
 			<p>What would you like to do today</p>
 			{currentUser ? (
 				<div>
-					<p>Hi there, {currentUser.email}!</p>
+					<p>
+						Hi there, {currentUser.displayName ?? currentUser.email}
+						!
+					</p>
 					<Link to="/account" className={classes.Link}>
 						<Button
 							type="strong"

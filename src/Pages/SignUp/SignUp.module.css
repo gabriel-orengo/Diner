@@ -8,24 +8,14 @@
 	font-size: 0.9em;
 }
 
-.ErrorMessage {
-	font-weight: bold;
-	margin: 0.5em 0;
-	padding: 1em;
-	border-radius: 15px;
-	background-color: var(--alert-color);
-}
-
 .Form {
 	background-color: white;
 	border: 1px solid black;
 	border-radius: 20px;
 	box-shadow: 0em 0em 0.25em grey;
 	padding: 0 25px;
-}
-
-.Required {
-	color: var(--alert-color);
+	width: 80%;
+	max-width: 450px;
 }
 
 .Switch {
@@ -34,37 +24,8 @@
 	text-decoration: underline;
 }
 
-.Form div {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.Form p {
-	margin: 0;
-}
-
-.Form input {
-	width: 80%;
-	border-radius: 15px;
-	padding: 5px;
-	font: inherit;
-}
-
 @media screen and (min-width: 450px) {
 	.SignUp {
 		font-size: 1em;
-	}
-
-	.Form div {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-
-	.Form input {
-		width: 300px;
-		margin: 10px;
 	}
 }

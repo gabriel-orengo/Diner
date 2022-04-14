@@ -2,7 +2,8 @@ import classes from "./SignUp.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Utils/AuthContext";
-import { Button } from "../../UI";
+import { determineError } from "../../Utils/FirebaseErrors";
+import { Button, ErrorMessage, Input } from "../../UI";
 
 /**
  * SignUp component to display the sign up screen
@@ -16,6 +17,7 @@ const SignUp = () => {
 	const { register } = useAuth();
 	const navigate = useNavigate();
 
+	// Confirm if the signup is successful
 	const confirmSignUp = async (
 		email: string,
 		password: string,
@@ -29,68 +31,43 @@ const SignUp = () => {
 			await register(email, password);
 			navigate("/", { replace: true });
 		} catch (error: any) {
-			if (error.message.includes("invalid-email")) {
-				setError("Invalid Email");
-			} else if (error.message.includes("weak-password")) {
-				setError("Password should be at least 6 characters long");
-			} else {
-				setError(error.message);
-			}
+			setError(determineError(error.message));
 		}
 	};
-
-	const errorMessage = <div className={classes.ErrorMessage}>{error}</div>;
 
 	return (
 		<div className={classes.SignUp}>
 			<div className={classes.Form}>
 				<h2>Sign Up</h2>
-				{error !== "" ? errorMessage : ""}
-				<form onSubmit={() => console.log("Submitted")}>
-					<div>
-						<p>
-							Email:<span className={classes.Required}>*</span>
-						</p>
-						<input
-							type="email"
-							id="email"
-							title="email"
-							autoComplete="off"
-							required
-							onChange={(event) => {
-								setEmail(event?.target.value);
-							}}
-						/>
-					</div>
-					<div>
-						<p>
-							Password:<span className={classes.Required}>*</span>
-						</p>
-						<input
-							type="password"
-							title="password"
-							autoComplete="off"
-							required
-							onChange={(event) => {
-								setPassword(event.target.value);
-							}}
-						/>
-					</div>
-					<div>
-						<p>
-							Confirm Password:
-							<span className={classes.Required}>*</span>
-						</p>
-						<input
-							type="password"
-							title="password"
-							autoComplete="off"
-							required
-							onChange={(event) => {
-								setConfirmPassword(event.target.value);
-							}}
-						/>
-					</div>
+				{error !== "" ? <ErrorMessage message={error} /> : ""}
+				<form>
+					<Input
+						label="Email"
+						type="email"
+						id="email"
+						title="email"
+						autoComplete="off"
+						required
+						action={(event: any) => setEmail(event.target.value)}
+					/>
+					<Input
+						label="Password"
+						type="password"
+						title="password"
+						autoComplete="off"
+						required
+						action={(event: any) => setPassword(event.target.value)}
+					/>
+					<Input
+						label="Confirm Password"
+						type="password"
+						title="password"
+						autoComplete="off"
+						required
+						action={(event: any) =>
+							setConfirmPassword(event.target.value)
+						}
+					/>
 				</form>
 				<Button
 					type="strong"
