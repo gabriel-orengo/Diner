@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Utils/AuthContext";
 import { determineError } from "../../Utils/FirebaseErrors";
-import { Button, ErrorMessage } from "../../UI";
+import { Button, ErrorMessage, Input } from "../../UI";
 
 /**
  * Login component to display the log in screen
@@ -16,6 +16,7 @@ const Login = () => {
 	const { login } = useAuth();
 	const navigate = useNavigate();
 
+	// Confirm if the login is successful
 	const confirmLogin = async (email: string, password: string) => {
 		try {
 			setError("");
@@ -31,37 +32,26 @@ const Login = () => {
 			<div className={classes.Form}>
 				<h2>Log in</h2>
 				{error !== "" ? <ErrorMessage message={error} /> : ""}
-				<form
-					onSubmit={() => {
-						console.log("Submitted");
-					}}>
-					<div>
-						<p>
-							Email:<span className={classes.Required}>*</span>
-						</p>
-						<input
-							type="email"
-							id="email"
-							title="email"
-							autoComplete="off"
-							required
-							onChange={(event) => setEmail(event.target.value)}
-						/>
-					</div>
-					<div>
-						<p>
-							Password:<span className={classes.Required}>*</span>
-						</p>
-						<input
-							type="password"
-							title="password"
-							autoComplete="off"
-							required
-							onChange={(event) =>
-								setPassword(event.target.value)
-							}
-						/>
-					</div>
+				<form>
+					<Input
+						label="Email"
+						type="email"
+						id="email"
+						title="email"
+						autoComplete="off"
+						required
+						onChange={(event: any) => setEmail(event.target.value)}
+					/>
+					<Input
+						label="Password"
+						type="password"
+						title="password"
+						autoComplete="off"
+						required
+						onChange={(event: any) =>
+							setPassword(event.target.value)
+						}
+					/>
 				</form>
 
 				<Button

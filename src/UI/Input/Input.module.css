@@ -1,0 +1,22 @@
+.Input input {
+	width: 90%;
+	border-radius: 15px;
+	padding: 5px;
+	margin: 0.4em 0;
+	font: inherit;
+	max-width: 450px;
+}
+
+.Input p {
+	margin: 0;
+}
+
+.Required {
+	color: var(--alert-color);
+}
+
+@media screen and (min-width: 500px) {
+	.Input {
+		font-size: 1em;
+	}
+}
