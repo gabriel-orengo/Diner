@@ -2,17 +2,5 @@
 	padding: 5px;
 	min-height: 40px;
 	background-color: #eee;
-	font-size: 0.6rem;
 	margin-top: auto;
-}
-
-.Credits {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	flex-wrap: wrap;
-}
-
-.Credits > * {
-	margin: 5px;
 }
