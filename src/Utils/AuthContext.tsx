@@ -48,15 +48,8 @@ export const AuthProvider = (props: any) => {
 
 	const logout = async () => {
 		await signOut(auth);
+		setCurrentUser(auth?.currentUser);
 	};
-
-	// const getLocalStorageUser = () => {
-	// 	return JSON.parse(localStorage.getItem("user") || "{}");
-	// }
-
-	// const setLocalStorageUser = (newUser: any) => {
-	//     localStorage.setItem("user", JSON.stringify(newUser));
-	// };
 
 	const authContext = {
 		currentUser,
