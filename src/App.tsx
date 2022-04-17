@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Header, Footer } from "./components";
+import { Credits, Header, Footer } from "./components";
 import {
 	Account,
 	Checkout,
@@ -29,6 +29,7 @@ const App = () => {
 					) : (
 						<Route path="/account" element={<Account />} />
 					)}
+					<Route path="/credits" element={<Credits />} />
 					<Route
 						path="*"
 						element={<Navigate to="/" replace={true} />}

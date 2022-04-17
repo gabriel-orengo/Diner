@@ -1,0 +1,29 @@
+.Credits {
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	-ms-grid-columns: auto;
+	justify-content: center;
+}
+
+.Credits > section {
+	background-color: white;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0.5em;
+	padding: 0.5em;
+	border: 1px solid black;
+	border-radius: 0.5em;
+	box-shadow: 0 0 0.5em 0.01em grey;
+}
+
+.Credits section h2 {
+	text-decoration: underline;
+}
+
+.Credits section > *:not(h2) {
+	margin: 1em;
+}
