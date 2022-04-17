@@ -7,7 +7,6 @@ import {
 	onAuthStateChanged,
 } from "firebase/auth";
 
-// @ts-ignore
 const AuthContext = React.createContext({
 	currentUser: auth?.currentUser,
 	register: (email: string, password: string) => {},
